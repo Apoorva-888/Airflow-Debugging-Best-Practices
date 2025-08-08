@@ -1,0 +1,71 @@
+# Troubleshooting Airflow Task Failures (Local & Remote)
+
+This guide helps you debug Airflow task failures, whether running locally or in a remote production environment.
+
+---
+
+## Step 1 – Check Logs
+
+### For **local runs**:
+```bash
+airflow tasks test <dag_id> <task_id> <execution_date>
+```
+Check logs in:
+```bash
+$AIRFLOW_HOME/logs
+```
+
+### For **remote runs**:
+- Open **Airflow UI → Task Instance → View Log**
+- If needed, download logs from worker nodes for deeper inspection.
+
+---
+
+## Step 2 – Verify Environment
+- Ensure Python dependencies match between **local** and **production**.
+- Run locally:
+```bash
+pip freeze > local_requirements.txt
+```
+- Compare with `requirements.txt` used in production.
+
+---
+
+## Step 3 – Test Connectivity
+- For API or database tasks:
+  - Run `curl` for APIs or `psql`/`mysql` for databases locally to confirm connectivity.
+- In production:
+  - Check **VPC**, **firewall**, or **security group** settings.
+
+---
+
+## Step 4 – Simulate Failure
+- Use provided DAGs:
+  - `task_failure_local.py`
+  - `task_failure_remote.py`
+- These can help reproduce issues in a controlled environment.
+
+---
+
+## Step 5 – Common Fixes
+
+### **Local:**
+- Create/activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+- Install missing dependencies:
+```bash
+pip install -r requirements.txt
+```
+- Set `.env` variables correctly.
+
+### **Remote:**
+- Ensure secrets/configurations are deployed (e.g., AWS Secrets Manager, Vault).
+- Increase worker memory if **OOM kills** occur.
+
+---
+
+## License
+This project is licensed under the [MIT License](LICENSE).
