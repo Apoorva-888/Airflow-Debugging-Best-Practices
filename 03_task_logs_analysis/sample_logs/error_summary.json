@@ -1,0 +1,6 @@
+{
+  "python_exception": 1,
+  "oom_killed": 0,
+  "connection_error": 0,
+  "airflow_fail": 1
+}
