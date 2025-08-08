@@ -1,0 +1,7 @@
+[2025-08-08 10:45:12,123] {taskinstance.py:1150} INFO - Starting attempt 1 of 1
+[2025-08-08 10:45:12,456] {logging_mixin.py:115} INFO - Running on host airflow-worker-1
+Traceback (most recent call last):
+  File "/usr/local/airflow/dags/my_dag.py", line 42, in my_task
+    raise ValueError("Invalid input data")
+ValueError: Invalid input data
+[2025-08-08 10:45:12,789] {taskinstance.py:1316} ERROR - Task failed with exception
