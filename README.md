@@ -54,10 +54,10 @@ This repository contains practical examples, reproducible scenarios, and trouble
 ---
 ## 📚 Credits & Resources
 **Credits**  
-- **Webinar Host:** [Astronomer.io](https://www.astronomer.io/)  
-- **Speaker:** Astronomer Airflow Experts Team  
-- **Repo Author:** [Your Name]  
---
+    **Webinar Host:** [Astronomer.io](https://www.astronomer.io/)  
+    **Speaker:** Astronomer Airflow Experts Team  
+    **Repo Author:** [Your Name]  
+---
 **Resources**  
 - [Apache Airflow Documentation](https://airflow.apache.org/docs/)  
 - [Astronomer Airflow Guides](https://www.astronomer.io/guides/)  
