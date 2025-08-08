@@ -1,0 +1,118 @@
+PLUGIN_COVERAGE - KNOWN ISSUES AND COMMON PROBLEMS
+
+1. ModuleNotFoundError: No module named 'boto3'
+
+Description:
+Python cannot find the 'boto3' package, required for AWS S3 interaction.
+
+Cause:
+- boto3 is not installed.
+- Wrong or inactive Python environment.
+
+Fix:
+- Run 'pip install boto3'.
+- Activate correct virtual environment.
+
+---
+
+2. Mocking Errors in Unit Tests
+
+Symptoms:
+- Tests fail with AttributeError or mocks don’t work.
+
+Cause:
+- Incorrect patch path for mocking boto3 client.
+
+Fix:
+- Use correct patch decorator:
+  @patch('plugin_coverage.operators.s3_to_local_operator.boto3.client')
+
+---
+
+3. Operator Not Found by Airflow
+
+Symptoms:
+- Airflow does not detect the custom operator.
+
+Cause:
+- Operator code not in Airflow plugins folder.
+- Missing __init__.py files.
+- Airflow not restarted after adding plugin.
+
+Fix:
+- Place operator in plugins/ folder.
+- Add __init__.py files in all folders.
+- Restart Airflow scheduler and webserver.
+
+---
+
+4. AWS Permissions / Authentication Errors
+
+Symptoms:
+- AccessDenied or NoCredentialsError on operator execution.
+
+Cause:
+- AWS credentials missing or expired.
+- Insufficient IAM permissions.
+
+Fix:
+- Configure AWS credentials locally or via environment variables.
+- Attach correct IAM permissions to Airflow instance.
+
+---
+
+5. Local Path Issues / Permission Denied
+
+Symptoms:
+- PermissionError when writing downloaded file.
+
+Cause:
+- Airflow user lacks write permission to destination path.
+- Parent directories missing.
+
+Fix:
+- Use writable local paths (e.g. /tmp).
+- Ensure directories exist or operator creates them.
+
+---
+
+6. Tests Not Running or Discovered
+
+Symptoms:
+- pytest does not find any tests.
+
+Cause:
+- Missing __init__.py in test folders.
+- Test files or functions not named correctly.
+
+Fix:
+- Add __init__.py files.
+- Name test files starting with 'test_'.
+- Run pytest from project root.
+
+---
+
+7. Operator Execution Context Issues
+
+Symptoms:
+- Errors when manually calling execute() in tests.
+
+Cause:
+- Missing or invalid execution context dict.
+
+Fix:
+- Pass empty dict when calling execute():
+  op.execute(context={})
+
+---
+
+8. boto3 Version Compatibility
+
+Symptoms:
+- Unexpected errors related to boto3 internals.
+
+Fix:
+- Upgrade boto3 and botocore to latest versions.
+
+---
+
