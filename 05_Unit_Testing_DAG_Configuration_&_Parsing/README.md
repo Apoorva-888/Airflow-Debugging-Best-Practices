@@ -1,20 +1,35 @@
-# Unit Testing DAG Configuration & Parsing
+# DAG Configuration Tests
 
-This module focuses on **validating Airflow DAG syntax** and **ensuring correct DAG loading** without actually running tasks.
+This folder contains tests that validate the structure and syntax of Airflow DAGs before they are deployed.
 
-## Contents
-- `sample_dag.py` — A minimal example DAG for testing.
-- `test_dag_parsing.py` — Unit test that:
-  - Imports the DAG.
-  - Ensures it is a valid Airflow `DAG` object.
-  - Checks that tasks and dependencies are defined correctly.
+## Purpose
 
-## How to Run
+Ensure all DAGs:
+- Load without syntax errors
+- Contain required tasks
+
+## Files
+
+- `sample_dag.py`  
+  A basic ETL DAG used for testing parsing.
+
+- `test_dag_parsing.py`  
+  Contains unit tests to validate DAG structure using `pytest`.
+
+- `__init__.py`  
+  Python package marker.
+
+## Running Tests
+
+Run the following command from the repo root:
+
 ```bash
-pytest dag_config_tests/ --disable-warnings -v
+pytest dag_config_tests/
 ```
-## Expected Outcome
-✅ Test passes if:
-- The DAG can be parsed successfully.
-- The task IDs are as expected.
-- No syntax or import errors occur.
+---
+##Summary
+This structure is great for:
+- **CI/CD pipelines** to catch broken DAGs before deployment.
+- **Onboarding** new data engineers to understand how a proper DAG is structured.
+- Ensuring **basic DAG hygiene**.
+
