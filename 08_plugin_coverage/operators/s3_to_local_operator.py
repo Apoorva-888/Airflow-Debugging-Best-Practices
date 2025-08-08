@@ -1,3 +1,8 @@
+"""
+A reusable Airflow operator for basic S3 file downloads.
+Could later be extended to use S3Hook and Airflow connections
+"""
+
 # plugin_coverage/operators/s3_to_local_operator.py
 
 from airflow.models import BaseOperator
