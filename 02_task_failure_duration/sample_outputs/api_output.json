@@ -1,0 +1,9 @@
+{
+  "task_instances": [
+    {
+      "start_date": "2025-08-04T10:15:00Z",
+      "end_date": "2025-08-08T09:45:00Z",
+      "state": "failed"
+    }
+  ]
+}
