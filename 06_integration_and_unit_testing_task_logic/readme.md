@@ -5,15 +5,17 @@ This is a minimal Python project demonstrating how to:
 - Test the logic with **unit tests**.
 - Test the pipeline end-to-end with **integration tests**.
 ## Install dependencies
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 ## Running the Pipeline
 Run the pipeline script:
-bash
+```bash
 python my_pipeline.py
+```
 ##  Running Tests
-bash
+```bash
 pytest tests/test_task_logic.py
 pytest tests/test_integration_task.py
+```
 ## Example
 Sample Data Flow:
 - task_logic.py: Reads a small dataset, filters rows, transforms data.
