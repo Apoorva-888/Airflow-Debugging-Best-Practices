@@ -8,18 +8,20 @@ This repository demonstrates how to **intentionally trigger** and then **fix** a
 - Capture logs for future reference
 
 ## 📂 Project Structure
-astro-debug-task-failure/
-│
-├── dags/
-│ ├── failing_dag.py # Intentionally broken DAG
-│ ├── fixed_dag.py # Corrected version
-│
-├── logs/
-│ ├── sample_failure.log # Captured output of the failure
-│
-├── docker-compose.override.yml # Enable DEBUG-level logging
-├── README.md # Step-by-step instructions + screenshots
-└── packages.txt # Extra deps if needed
+## 📂 Repository Structure
+
+Folder / File                | Description
+----------------------------|-----------------------------------------------------
+dags                        | Folder containing Airflow DAG files
+failing_dag.py              | Intentionally broken DAG to simulate failure
+fixed_dag.py                | Corrected DAG version with error handling
+logs                        | Folder storing sample logs from DAG runs
+sample_failure.log          | Captured output of the failure
+Steps_to_Run_&_Debug.md     | Step-by-step instructions to run and debug locally
+docker-compose.override.yaml| Override to enable DEBUG logging in Airflow
+packages.txt                | Lists extra Python dependencies (e.g., requests)
+README.md                   | Project overview and instructions
+
 
 ## 🛠 Prerequisites
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed & running  
