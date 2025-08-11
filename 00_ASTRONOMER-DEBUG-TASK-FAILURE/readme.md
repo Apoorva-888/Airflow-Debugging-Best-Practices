@@ -7,10 +7,8 @@ This repository demonstrates how to **intentionally trigger** and then **fix** a
 - Understand **how to fix** common issues
 - Capture logs for future reference
 
-## 📂 Project Structure
-## 📂 Repository Structure
-
-Folder / File                | Description
+### 📂 Project Structure
+Folder / File               | Description
 ----------------------------|-----------------------------------------------------
 dags                        | Folder containing Airflow DAG files
 failing_dag.py              | Intentionally broken DAG to simulate failure
@@ -23,7 +21,7 @@ packages.txt                | Lists extra Python dependencies (e.g., requests)
 README.md                   | Project overview and instructions
 
 
-## 🛠 Prerequisites
+### 🛠 Prerequisites
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed & running  
 - [Astronomer CLI](https://www.astronomer.io/docs/astro/cli/install-cli) installed  
 - Basic Python knowledge  
