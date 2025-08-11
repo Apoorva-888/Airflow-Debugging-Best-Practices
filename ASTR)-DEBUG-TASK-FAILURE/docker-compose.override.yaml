@@ -1,0 +1,59 @@
+# docker-compose.override.yml
+# -----------------------------------------------------------------------------
+# This file overrides the default Astronomer docker-compose.yml
+# Purpose: Enable DEBUG-level logging for Airflow components and allow
+#          more verbose troubleshooting during DAG/task execution.
+# -----------------------------------------------------------------------------
+
+version: "3"
+
+# -----------------------------------------------------------------------------
+# Override services from Astronomer's base docker-compose.yml
+# We specifically override:
+#   - scheduler
+#   - webserver
+#   - triggerer (if using Airflow 2.2+)
+# -----------------------------------------------------------------------------
+services:
+  scheduler:
+    environment:
+      # Airflow logging level set to DEBUG for verbose logs
+      AIRFLOW__LOGGING__LOGGING_LEVEL: "DEBUG"
+      # SQLAlchemy logging (tracks database queries) - optional
+      AIRFLOW__LOGGING__FAB_LOGGING_LEVEL: "DEBUG"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+  webserver:
+    environment:
+      AIRFLOW__LOGGING__LOGGING_LEVEL: "DEBUG"
+      AIRFLOW__LOGGING__FAB_LOGGING_LEVEL: "DEBUG"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+  triggerer:
+    environment:
+      AIRFLOW__LOGGING__LOGGING_LEVEL: "DEBUG"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+# -----------------------------------------------------------------------------
+# Notes:
+#   - Place this file in the root of your Astronomer project alongside
+#     the default `docker-compose.yml`.
+#   - Astronomer will automatically merge it when you run:
+#       astro dev start
+#   - DEBUG-level logging will help you capture:
+#       * Task execution tracebacks in more detail
+#       * Database queries made by Airflow
+#       * Scheduler heartbeat and DAG parsing steps
+# -----------------------------------------------------------------------------
