@@ -1,6 +1,6 @@
 # Troubleshooting – Timezone Mismatch
 
-# Step 1 – Verify Environment Timezone
+### Step 1 – Verify Environment Timezone
 Run:
 ```bash
 date
@@ -13,12 +13,12 @@ In Airflow:
 - airflow.cfg → default_timezone
 - DAG definition timezone parameter
 
-# Step 3 – Review Cron Interpretation
+### Step 3 – Review Cron Interpretation
 Example:
 - IST job 0 8 * * *
 - In UTC, this means 0 2 * * * (6 hours difference).
 
-# Step 4 – Simulate Timezone Conversion
+### Step 4 – Simulate Timezone Conversion
 ```
 python
 import pendulum
@@ -27,7 +27,7 @@ ist_time = utc_time.in_timezone("Asia/Kolkata")
 print(ist_time)
 ```
 
-# Step 5 – Fix and Test
+### Step 5 – Fix and Test
 - Update timezone in scheduler config.
 - Re-run DAG and confirm execution time.
 - Document change for all environments.
