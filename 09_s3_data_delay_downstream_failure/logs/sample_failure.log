@@ -1,0 +1,9 @@
+[2025-08-11 06:31:45,123] {taskinstance.py:1281} INFO - Executing <Task(PythonOperator): process_data> on 2025-08-11 06:30:00+00:00
+[2025-08-11 06:31:45,456] {logging_mixin.py:115} INFO - Running command: ['python', 'process_data.py']
+[2025-08-11 06:31:46,001] {python.py:151} INFO - FileNotFoundError: [Errno 2] No such file or directory: 'data/input_data.csv'
+[2025-08-11 06:31:46,002] {taskinstance.py:1542} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/s3_data_delay_example.py", line 24, in process_data
+    with open('data/input_data.csv', 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/input_data.csv'
+[2025-08-11 06:31:46,005] {taskinstance.py:1590} INFO - Marking task as FAILED.
