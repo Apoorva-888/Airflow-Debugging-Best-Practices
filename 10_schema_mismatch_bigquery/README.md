@@ -24,3 +24,12 @@ gcloud auth application-default login
 
 # Run the script
 python schema_mismatch_demo.py
+```
+
+## Expected Output
+The script will raise a google.api_core.exceptions.BadRequest error indicating schema mismatch.
+
+## 📚 Related Docs
+- [BigQuery Schema Mismatch Errors](https://cloud.google.com/bigquery/docs/schema-mismatches)
+- [Python BigQuery Client](https://cloud.google.com/python/docs/reference/bigquery/latest)
+
