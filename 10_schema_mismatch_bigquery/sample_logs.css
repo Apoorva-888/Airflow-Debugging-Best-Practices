@@ -1,0 +1,5 @@
+NFO: Starting BigQuery load job...
+ERROR: google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table demo_dataset.demo_table.
+Field id has changed type from INTEGER to STRING
+Job ID: 2025-08-11_12_00_00
+Status: FAILED
