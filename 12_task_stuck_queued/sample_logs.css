@@ -1,0 +1,4 @@
+[2025-08-11 10:32:14,457] {scheduler_job.py:1320} INFO - Executor reports execution of queued task instance queued_task_example.extract_data execution_date=2025-08-11 10:30:00+00:00
+[2025-08-11 10:32:14,459] {local_task_job.py:152} INFO - Task is in 'queued' state but not yet running. Waiting for worker slot...
+[2025-08-11 10:32:24,470] {scheduler_job.py:1320} INFO - Still no available slots for queued task instance queued_task_example.extract_data
+[2025-08-11 10:33:34,489] {scheduler_job.py:1320} INFO - Task queued for 80s without progress. Possible worker shortage or pool starvation.
