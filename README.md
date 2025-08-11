@@ -1,52 +1,59 @@
 # Airflow Debugging & Testing Best Practices
-This repository contains practical examples, reproducible scenarios, and troubleshooting tips based on the **Astronomer Webinar: “Best Practices for Debugging and Testing Airflow Pipelines”**, along with additional real-world cases from production experience.
+A practical guide and set of examples for debugging and testing Apache Airflow pipelines.This repository contains reproducible scenarios, real-world troubleshooting cases, and best practices distilled from the Astronomer Webinar **"Best Practices for Debugging and Testing Airflow Pipelines"** plus additional production experiences.
+
+## 📌 Overview
+Working with Airflow in production inevitably involves dealing with failing DAGs, import errors, misconfigured tasks, and tricky runtime bugs.  
+This project aims to:
+- Provide **ready-to-run examples** for different Airflow debugging scenarios.
+- Demonstrate **testing workflows** for DAGs and tasks.
+- Share **best practices** for building maintainable Airflow pipelines.
+- Offer **troubleshooting guides** and logs for faster resolution.
 
 ## 🛠 Use Cases Covered
-### 1. **No DAGs Found**
-- **Symptoms:** Airflow UI shows no DAGs despite them being in the `dags/` folder.
-- **Root Cause:** Misconfigured `dags_folder` path, wrong file extension, or missing Python imports.
-- **Resolution:** Verify `airflow.cfg`, ensure `.py` extensions, and check DAG syntax.
-### 2. **DAGs Paused by Default**
-- **Symptoms:** DAGs appear but are not running automatically.
-- **Root Cause:** DAGs are created in a paused state (`is_paused_upon_creation=True`).
-- **Resolution:** Unpause in UI or set `is_paused_upon_creation=False`.
-### 3. **Missing Pools**
-- **Symptoms:** Tasks stuck in "queued" state indefinitely.
-- **Root Cause:** Tasks assigned to non-existent pools.
-- **Resolution:** Create the pool via UI/CLI or remove `pool` parameter.
-### 4. **DAG Parsing Failures**
-- **Symptoms:** DAG not listed, parsing error in scheduler logs.
-- **Root Cause:** Syntax errors, missing imports, or circular dependencies in DAG definition.
-- **Resolution:** Run `airflow dags list` or check `scheduler.log` to identify and fix the code.
-### 5. **Start Date & Scheduling Issues**
-- **Symptoms:** DAG not triggering or triggering unexpectedly.
-- **Root Cause:** `start_date` in the future, wrong timezone handling, or misuse of `catchup`.
-- **Resolution:** Use timezone-aware datetimes, verify `catchup` parameter, adjust schedule.
-### 6. **Task Dependency Deadlocks**
-- **Symptoms:** DAG execution stuck because of circular dependencies.
-- **Root Cause:** Incorrect use of `.set_upstream()` / `.set_downstream()` or bitshift operators.
-- **Resolution:** Review DAG structure visually via Airflow Graph View and remove cycles.
-### 7. **Environment Variable Misconfiguration**
-- **Symptoms:** DAG works locally but fails in deployment.
-- **Root Cause:** Missing or misconfigured environment variables.
-- **Resolution:** Define variables in `airflow variables`, `.env` files, or Kubernetes secrets.
-### 8. **Large XCom Size Causing Failures**
-- **Symptoms:** Task fails with database write errors due to oversized XCom payloads.
-- **Root Cause:** Returning large datasets instead of storing in external storage.
-- **Resolution:** Store large data in S3/GCS and push only reference paths to XCom.
-### 9. **Connection & Credential Issues**
-- **Symptoms:** External system integrations fail despite correct credentials.
-- **Root Cause:** Incorrect Airflow connection setup or missing `extra` parameters.
-- **Resolution:** Use `airflow connections add` or UI to configure connections with correct JSON extras.
-### 10. **Parallelism & Resource Limits**
-- **Symptoms:** DAGs slow or queued even when workers are idle.
-- **Root Cause:** Low `parallelism`, `max_active_runs_per_dag`, or executor settings.
-- **Resolution:** Tune Airflow configs, adjust task concurrency, and monitor resource usage.
----
-## Credits
--    Webinar Host: [Astronomer.io](https://www.astronomer.io/)  
--   Speaker: Astronomer Airflow Experts Team  
--   Repo Author: [Apoorva Chillal]  
+- **01_task_failure_local_remote**  
+  Demonstrates diagnosing and resolving task failures when running locally versus in a remote Airflow environment.
+
+- **02_task_failure_duration**  
+  Shows how to debug tasks that fail due to excessive execution time or timeout settings.
+
+- **03_task_logs_analysis**  
+  Focuses on collecting, reviewing, and interpreting Airflow logs to identify root causes of failures.
+
+- **04_api_permission_issues**  
+  Highlights troubleshooting steps for tasks failing due to insufficient API permissions or authentication errors.
+
+- **05_Unit_Testing_DAG_Configuration_&_Parsing**  
+  Covers how to write and run unit tests to validate DAG parsing and configuration correctness.
+
+- **06_integration_and_unit_testing_task_logic**  
+  Explains strategies for combining integration tests with unit tests to verify task logic end-to-end.
+
+- **07_dag_validation**  
+  Provides examples of programmatically validating DAG structure, dependencies, and metadata before deployment.
+
+- **08_plugin_coverage**  
+  Demonstrates how to test and ensure coverage for custom Airflow plugins.
+
+- **09_s3_data_delay_downstream_failure**  
+  Shows how to handle and debug downstream task failures caused by delayed data arrival in S3.
+
+- **10_schema_mismatch_bigquery**  
+  Explains detecting and fixing schema mismatches when loading data into BigQuery.
+
+- **11_timezone_mismatch**  
+  Highlights issues arising from timezone differences in scheduling, execution, and data processing.
+
+- **12_task_stuck_queued**  
+  Provides guidance on diagnosing and resolving tasks that remain indefinitely in the `queued` state.
+
+## 🙌 Credits
+
+This project was inspired by and builds upon knowledge shared by experts at Astronomer:
+- **Kenten Danas** – Senior Manager, Developer Relations, Astronomer  
+- **Jake Roach** – Associate Sales Engineer, Astronomer  
+- **Chris Munn** – Associate Sales Engineer, Astronomer
+-  Webinar Host: [Astronomer.io](https://www.astronomer.io/)  
+-  Speaker: Astronomer Airflow Experts Team  
 
 ## Resources
  [Apache Airflow Documentation](https://airflow.apache.org/docs/)  
