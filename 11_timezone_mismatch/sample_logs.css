@@ -1,0 +1,3 @@
+[2025-08-11 02:00:00,123] {scheduler.py:500} INFO - DAG 'daily_report' triggered at 02:00 UTC
+[2025-08-11 07:30:00,456] {timezone.py:210} WARNING - Timezone mismatch detected: expected Asia/Kolkata, got UTC
+[2025-08-11 07:30:01,789] {task_runner.py:300} ERROR - Task skipped due to missing dependency (previous run not found)
