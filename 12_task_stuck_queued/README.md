@@ -1,7 +1,6 @@
 # Scenario 12 – Task Stuck in Queued State
 
-## Overview
-
+### Overview
 This example demonstrates a common Apache Airflow issue where a task gets stuck in the **queued** state and never progresses to **running** or **success**.
 
 The cause can be due to:
@@ -16,9 +15,7 @@ This repository contains:
 - Documentation for the issue and troubleshooting.
 - Example dummy dataset (`data/dummy_input.csv`).
 
----
-
-## Folder Contents
+### Folder Contents
 
 | File/Folder                   | Purpose                                                      |
 |--------------------------------|--------------------------------------------------------------|
@@ -29,12 +26,29 @@ This repository contains:
 | `dags/queued_task_example.py` | Airflow DAG reproducing the problem.                         |
 | `data/dummy_input.csv`        | Dummy CSV file for the DAG to process.                       |
 
----
-
-## Quick Start
+### Quick Start
 
 1. **Clone the repo**:
-   ```bash
-   git clone https://github.com/your-username/airflow-debug-scenarios.git
-   cd airflow-debug-scenarios/12_task_stuck_queued
 ```
+bash
+git clone https://github.com/your-username/airflow-debug-scenarios.git
+cd airflow-debug-scenarios/12_task_stuck_queued
+```
+
+2. Start Airflow (example with Astro CLI):
+```
+bash
+astro dev start
+```
+3. Trigger the DAG:
+```
+bash
+airflow dags trigger queued_task_example
+```
+4. Observe: The task will remain in queued state due to intentional executor slot blocking.
+
+### Requirements
+- Apache Airflow >= 2.5
+- Python >= 3.8
+- Executor: CeleryExecutor or KubernetesExecutor recommended to see queued state issues.
+
