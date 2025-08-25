@@ -1,0 +1,16 @@
+# Python (Airflow DAGs, operators)
+*.py linguist-language=Python
+
+# SQL (queries inside dags/sql folder)
+*.sql linguist-language=SQL
+
+# Jupyter Notebooks (if you keep demos/tests)
+*.ipynb linguist-language=Jupyter Notebook
+
+# Shell scripts
+*.sh linguist-language=Shell
+
+# Exclude auto-generated files
+*.log linguist-generated=true
+*.json linguist-generated=true
+*.csv linguist-generated=true
