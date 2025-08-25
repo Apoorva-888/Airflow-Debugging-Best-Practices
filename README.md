@@ -61,5 +61,12 @@ This project was inspired by and builds upon knowledge shared by experts at Astr
  [Astronomer: Best Practices for Debugging and Testing Airflow Pipelines](https://www.astronomer.io/events/webinars/best-practices-debugging-testing-airflow/)  
  [Apache Airflow Official Documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html)  
  [Airflow Configuration Reference](https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html)  
+
+## 🛠️ Languages & Tools
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-Queries-orange?logo=databricks&logoColor=white)
+![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-2.x-darkblue?logo=apacheairflow&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-Scripts-black?logo=gnu-bash&logoColor=white)
+
  
 
